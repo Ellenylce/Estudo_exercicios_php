@@ -1,7 +1,7 @@
 <?php
 //1. Crie uma variável em PHP, atribua um valor e exiba na página.
-$nome = "Seja bem vindo";
-echo $nome;
+$boas_vindas = "Seja bem vindo";
+echo $boas_vindas;
 echo "<br>";
 
 // 2. Exiba na tela as variáveis nome, idade, endereco e curso fazendo a
@@ -42,7 +42,7 @@ if($numero1 == $numero2){
 // a. Dica: use a função do php str_contains() que recebe como argumentos
 // a string a ser lida e o valor a ser procurado.
 $palavra = '"cair"';
-if ((str_contains($palavra, 'a')) && (str_contains($palavra, 'o'))) {
+if ((str_contains($palavra, 'a') || str_contains($palavra, 'A')) && (str_contains($palavra, 'o') || str_contains($palavra, 'O'))) {
 	echo 'A palavra '.$palavra.' contém a letra "a" e "o" ';
 }else{
     echo 'A palavra '.$palavra.' não contém a letra "a" e "o" ';
@@ -74,7 +74,7 @@ echo '<br>';
 function verificarSenha($senha) {
     // Verifica se a senha tem mais de 8 caracteres
     if (strlen($senha) < 8) {
-        return false;
+        return false; //se for falso para aqui
     }
     
     // verificar os requisitos
@@ -119,7 +119,7 @@ echo "Senha (" . $senha . ") é válida? " . (verificarSenha($senha) ? "Sim" : "
 // 8. Usando o operador ternário faça uma questão que leia uma idade e indique se é
 // maior de idade ou não.
 
-echo ($idade == 18 || $idade > 18)? 'Maior de idade': 'Menor de idade';
+echo ($idade >= 18 )? 'Maior de idade': 'Menor de idade';
 
 // 9. Percorra o array abaixo e exiba o nome e a nota dos aprovados (nota maior ou igual a 7).
 $alunos = array (
@@ -142,8 +142,9 @@ foreach($alunos as $nome => $nota){
 $pi = 3.14;
 $raio = 4;
 $area = $pi * ($raio*$raio);
-echo '<br>A área do circulo é: '.$area;
+echo '<br>A área do circulo é: '.$area;  //esqueci de fazer com a function 
 echo'<br>';
+
 
 
 // 11. Crie uma função que receba um número como parâmetro e retorna um array de
@@ -196,18 +197,18 @@ echo determinarSeculo($ano) . "<br>";
 // Palíndromos são palavras que se pode ler, indiferentemente, da esquerda para a
 // direita ou vice-versa. Exemplo: arara.
 
-function verificarPalindromo($palavra) {
+function verificarPalindromo($string) {
     // strtolower: convert string em minuscula
     // str_replace: busca o valor na string e substitue por um novo
     // Ex: str_replace ('$busca_na_string', '$substitui_a_string', '$string')
     // Remove espaços se a string for um texto  e substitui sem os espaços (em branco) e converte para minúsculas (strtolower) para a comparação
-    $palavra = strtolower(str_replace(' ', '', $palavra));
+    $string = strtolower(str_replace(' ', '', $string));
     
     // Inverte a string
-    $reversa = strrev($palavra);
+    $reversa = strrev($string);
     
     // Verifica se a string original é igual à sua reversa
-    if ($palavra === $reversa) {
+    if ($string === $reversa) {
         return true;
     } else {
         return false;
@@ -215,7 +216,7 @@ function verificarPalindromo($palavra) {
 }
 
 
-$palavra = "arara";
-echo $palavra . " é um palíndromo? " . (verificarPalindromo($palavra) ? "Sim" : "Não") . "<br>"; 
+$string = "arara";
+echo $string . " é um palíndromo? " . (verificarPalindromo($string) ? "Sim" : "Não") . "<br>"; 
 ?>
 
